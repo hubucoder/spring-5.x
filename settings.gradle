@@ -1,5 +1,5 @@
 include "spring-aop"
-include "spring-aspects"
+//include "spring-aspects"
 include "spring-beans"
 include "spring-context"
 include "spring-context-support"
@@ -29,8 +29,8 @@ rootProject.name = "spring"
 rootProject.children.each {project ->
 	project.buildFileName = "${project.name}.gradle"
 }
-include 'spring-source-study'
-include 'spring-mymvc'
-include 'spring-mymvc-annotation'
-include 'spring-mybatis'
+//include 'spring-source-study'
+//include 'spring-mymvc'
+//include 'spring-mymvc-annotation'
+//include 'spring-mybatis'
 
