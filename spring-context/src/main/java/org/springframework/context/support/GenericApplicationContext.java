@@ -94,7 +94,7 @@ import org.springframework.util.Assert;
 public class GenericApplicationContext extends AbstractApplicationContext implements BeanDefinitionRegistry {
 
 	/**
-	 * 默认的Bean工厂，可以已列表方式获取Bean信息的工厂.
+	 * 默认的Bean工厂，可以以列表方式获取Bean信息的工厂.
 	 */
 	private final DefaultListableBeanFactory beanFactory;
 

@@ -29,8 +29,5 @@ rootProject.name = "spring"
 rootProject.children.each {project ->
 	project.buildFileName = "${project.name}.gradle"
 }
-//include 'spring-source-study'
-//include 'spring-mymvc'
-//include 'spring-mymvc-annotation'
-//include 'spring-mybatis'
+include 'sq-study'
 

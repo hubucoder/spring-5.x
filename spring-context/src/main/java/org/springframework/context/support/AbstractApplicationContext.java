@@ -531,7 +531,7 @@ public abstract class AbstractApplicationContext
 			 */
 			prepareRefresh();
 			/**
-			 * 2.获取Bean工厂，期间会做解析和加载bean定义的一些列工作.生成BeanDefinition对象.
+			 * 2.获取Bean工厂，期间会做解析和加载bean定义的一系列工作.生成BeanDefinition对象.
 			 * 此处返回的beanFactory的真实类型为：DefaultListableBeanFactory
 			 *
 			 *
