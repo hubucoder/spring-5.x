@@ -1,6 +1,7 @@
 *.java.hsp
 *.sonarj
 *.sw*
+*.zip
 .DS_Store
 .settings
 .springBeans
