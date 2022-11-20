@@ -89,8 +89,3 @@ spring-jcl: spring5.x之后通过"适配器设计模式"封装的一个通用的
     </dependency>
 <dependencies>
 ```
-##### 报错
-```angular2html
-找不到符号：将 optional 改为 compile
-
-```

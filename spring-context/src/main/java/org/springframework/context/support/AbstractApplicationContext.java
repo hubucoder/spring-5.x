@@ -533,7 +533,7 @@ public abstract class AbstractApplicationContext
 			/**
 			 * 2.获取Bean工厂，期间会做解析和加载bean定义的一系列工作.生成BeanDefinition对象.
 			 * 此处返回的beanFactory的真实类型为：DefaultListableBeanFactory
-			 *
+			 *	todo xml 开发这个步骤比较重要
 			 *
 			 * 自定义的xsd约束文件也会在该步骤进行解析，通过实现BeanDefinitionParser接口，并实现parse方法
 			 * 解析自定义标签时通过实现NamespaceHandlerSupport接口，并实现init方法进行实现
@@ -572,7 +572,7 @@ public abstract class AbstractApplicationContext
 				postProcessBeanFactory(beanFactory);
 
 				/**
-				 * 5.执行beanFactory的后置处理器
+				 * 5.执行beanFactory的后置处理器 注解开发这个步骤比较重要
 				 *
 				 * 先执行BeanDefinitionRegistryPostProcessor接口的实现类的postProcessBeanDefinitionRegistry方法，
 				 *   执行过程中，也是先执行实现了优先级接口PriorityOrdered的BeanDefinitionRegistryPostProcessor的postProcessBeanDefinitionRegistry方法
@@ -638,7 +638,7 @@ public abstract class AbstractApplicationContext
 				 */
 				registerListeners();
 
-				/**
+				/**	本步骤对于两种开发方式比较重要 将 beanDef 变为 bean 实例对象
 				 * 11.初始化所有剩余的单实例Bean(没有使用懒加载的Bean).整个Spring IOC的核心.
 				 *
 				 * 包括执行@PostConstruct标注的方法.
@@ -1119,7 +1119,7 @@ public abstract class AbstractApplicationContext
 		 * 如果beanFactory之前没有注册嵌入值解析器，则注册默认的嵌入值解析器，
 		 *  主要用于注解属性值的解析例如：@Value("${app.name}")。
 		 */
-		// 值解析器设置的地方：在调用invokeBeanfactoryPostProcessor方法的时候，通过PropertySourcesPlaceholderConfigurer的后置处理方法设置进去的
+		// 值解析器设置的地方：在调用invokeBeanFactoryPostProcessor方法的时候，通过PropertySourcesPlaceholderConfigurer的后置处理方法设置进去的
 		if (!beanFactory.hasEmbeddedValueResolver()) {
 			// 调用resolvePlaceholders方法解析strVal对应的值
 			beanFactory.addEmbeddedValueResolver(strVal -> getEnvironment().resolvePlaceholders(strVal));
@@ -1136,10 +1136,10 @@ public abstract class AbstractApplicationContext
 		// 停止使用临时的类加载器.
 		beanFactory.setTempClassLoader(null);
 
-		// 缓存(冻结)所有的BeanName（注册的bean定义不会被修改或进一步做处理了，因为下面马上要创建Bean的实例对象了）
+		// 缓存(冻结)所有的 BeanDefinition 元信息（注册的bean定义不会被修改或进一步做处理了，因为下面马上要创建Bean的实例对象了）
 		beanFactory.freezeConfiguration();
 
-		// 初始化所有的单实例Bean，包括创建单实例bean的全部过程
+		// 初始化所有的单实例Bean，包括创建单实例bean的全部过程 重要
 		beanFactory.preInstantiateSingletons();
 	}
 

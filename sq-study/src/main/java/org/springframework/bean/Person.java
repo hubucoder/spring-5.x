@@ -1,8 +1,13 @@
-package org.springframework.study;
+package org.springframework.bean;
+
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Person {
 	private String name;
 	private int age;
+
+	@Autowired
+	private Animal animal;
 
 	public void setName(String name) {
 		this.name = name;

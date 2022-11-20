@@ -233,7 +233,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					ObjectFactory<?> singletonFactory = this.singletonFactories.get(beanName);
 					if (singletonFactory != null) {
 						// 如果存在着单例对象工厂，则通过工厂创建一个单例对象，
-						// 调用的是：addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean))中的拉姆达表达式
+						// 调用的是：addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean))中的lambda表达式
 						singletonObject = singletonFactory.getObject();
 						// 将通过单例对象工厂创建的单例对象放入到早期单例对象缓存中，这个早期对象指的是一个空的未完成属性赋值和初始化的对象。
 						this.earlySingletonObjects.put(beanName, singletonObject);
@@ -286,7 +286,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 					this.suppressedExceptions = new LinkedHashSet<>();
 				}
 				try {
-					/** 回调ObjectFactory的getObject方法，进行单实例Bean的创建. */
+					/** 回调ObjectFactory的getObject方法，进行单实例Bean的创建. 得到单例的 bean 对象 重要 */
 					singletonObject = singletonFactory.getObject();
 					/** 标注单实例bean创建成功 */
 					newSingleton = true;

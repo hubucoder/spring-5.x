@@ -1,6 +1,6 @@
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.study.Person;
+import org.springframework.bean.Person;
 
 public class test {
 	public static void main(String[] args) {

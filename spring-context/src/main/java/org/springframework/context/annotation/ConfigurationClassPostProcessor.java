@@ -217,7 +217,7 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 		// 将马上要处理的registry对象的唯一标识id放入到已经处理的集合对象中，防止重复执行
 		this.registriesPostProcessed.add(registryId);
 
-		// 解析配置类中的Bean定义.
+		//todo 解析配置类中的Bean定义.
 		processConfigBeanDefinitions(registry);
 	}
 
@@ -400,10 +400,10 @@ public class ConfigurationClassPostProcessor implements BeanDefinitionRegistryPo
 			// If a @Configuration class gets proxied, always proxy the target class
 			beanDef.setAttribute(AutoProxyUtils.PRESERVE_TARGET_CLASS_ATTRIBUTE, Boolean.TRUE);
 			try {
-				// Set enhanced subclass of the user-specified bean class
+				// Set enhanced subclass of the user-specified bean class 有这个 full 属性的 beanClass 需要动态代理
 				Class<?> configClass = beanDef.resolveBeanClass(this.beanClassLoader);
 				if (configClass != null) {
-					Class<?> enhancedClass = enhancer.enhance(configClass, this.beanClassLoader);
+ 					Class<?> enhancedClass = enhancer.enhance(configClass, this.beanClassLoader);
 					if (configClass != enhancedClass) {
 						if (logger.isTraceEnabled()) {
 							logger.trace(String.format("Replacing bean definition '%s' existing class '%s' with " +

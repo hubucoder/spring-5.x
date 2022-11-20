@@ -105,7 +105,7 @@ class ConfigurationClassEnhancer {
 						configClass.getName()));
 			}
 			return configClass;
-		}
+		} // cglib
 		Class<?> enhancedClass = createClass(newEnhancer(configClass, classLoader));
 		if (logger.isTraceEnabled()) {
 			logger.trace(String.format("Successfully enhanced %s; enhanced class name is: %s",

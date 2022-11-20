@@ -162,7 +162,7 @@ class ConfigurationClassParser {
 						"Failed to parse configuration class [" + bd.getBeanClassName() + "]", ex);
 			}
 		}
-		// 处理延迟ImportSelector
+		// 处理延迟ImportSelector springboot 自动化装配
 		this.deferredImportSelectorHandler.process();
 	}
 
@@ -223,7 +223,7 @@ class ConfigurationClassParser {
 		// 递归调用asSourceClass方法来解析当前配置类及父配置类中的元数据信息，包括配置类上面的注解信息
 		SourceClass sourceClass = asSourceClass(configClass);
 		do {
-			// 解析具体的配置类.
+			// 解析具体的配置类. 读取配置类上面的各种注解
 			sourceClass = doProcessConfigurationClass(configClass, sourceClass);
 		}
 		while (sourceClass != null);

@@ -216,6 +216,7 @@ class ConditionEvaluator {
 		}
 
 		private ResourceLoader deduceResourceLoader(@Nullable BeanDefinitionRegistry source) {
+			// AnnotationConfigApplicationContext 继承了 GenericApplicationContext，GenericApplicationContext 实现了 ResourceLoader 接口
 			if (source instanceof ResourceLoader) {
 				return (ResourceLoader) source;
 			}

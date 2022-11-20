@@ -138,7 +138,7 @@ public abstract class AnnotationConfigUtils {
 	 * registry: AnnotationConfigApplicationContext
 	 */
 	public static void registerAnnotationConfigProcessors(BeanDefinitionRegistry registry) {
-		// 向Bean定义注册中心注册注解配置形式的后置处理器
+		// 向Bean定义注册中心注册注解配置形式的后置处理器 5 个
 		registerAnnotationConfigProcessors(registry, null);
 	}
 

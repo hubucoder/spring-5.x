@@ -111,7 +111,7 @@ final class PostProcessorRegistrationDelegate {
 			// 添加到registryProcessors，最后用于执行postProcessBeanFactory方法
 			registryProcessors.addAll(currentRegistryProcessors);
 
-
+			// todo 重要 调用 PostProcessors
 			// 遍历当前要执行的所有BeanDefinitionRegistryPostProcessor，执行其postProcessBeanDefinitionRegistry方法.
 			// 此处有一个重要的Bean定义注册中心的后置处理器：ConfigurationClassPostProcessor，配置类解析、条件注册的回调、方法及配置类的校验等操作
 			invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
@@ -160,7 +160,7 @@ final class PostProcessorRegistrationDelegate {
 				sortPostProcessors(currentRegistryProcessors, beanFactory);
 				registryProcessors.addAll(currentRegistryProcessors);
 				// 依次执行BeanDefinitionRegistryPostProcessor的postProcessBeanDefinitionRegistry()方法
-				// 执行时机是加载bean定义之前
+				// 执行时机是加载bean定义之前  mybatis 注册 bean 定义
 				invokeBeanDefinitionRegistryPostProcessors(currentRegistryProcessors, registry);
 				currentRegistryProcessors.clear();
 			}

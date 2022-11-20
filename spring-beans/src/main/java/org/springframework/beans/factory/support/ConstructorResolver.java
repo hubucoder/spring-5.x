@@ -493,7 +493,7 @@ class ConstructorResolver {
 						mbd.constructorArgumentsResolved = true;
 						mbd.resolvedConstructorArguments = EMPTY_ARGS;
 					}
-					// 在普通的配置类中配置Bean，则会在此处直接通过反射调用标注@Bean注解的方法创建bean对象.
+					// 在普通的配置类中配置Bean，则会在此处直接通过反射调用标注@Bean注解的方法创建bean对象. 重要！！！
 					bw.setBeanInstance(instantiate(beanName, mbd, factoryBean, uniqueCandidate, EMPTY_ARGS));
 					return bw;
 				}
@@ -661,7 +661,7 @@ class ConstructorResolver {
 								mbd, beanName, this.beanFactory, factoryBean, factoryMethod, args),
 						this.beanFactory.getAccessControlContext());
 			}
-			else {
+			else { // 初始化的核心方法 重要
 				return this.beanFactory.getInstantiationStrategy().instantiate(
 						mbd, beanName, this.beanFactory, factoryBean, factoryMethod, args);
 			}

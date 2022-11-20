@@ -226,7 +226,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	/**
 	 * Resolve the given embedded value, e.g. an annotation attribute.
 	 * @param value the value to resolve
-	 * @return the resolved value (may be the original value as-is)
+	 * @return the resolved value (maybe the original value as-is)
 	 * @since 3.0
 	 */
 	@Nullable

@@ -493,7 +493,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 					"BeanPostProcessor before instantiation of bean failed", ex);
 		}
 		try {
-			// 执行创建Bean的操作
+			// 执行创建Bean的操作 重要
 			Object beanInstance = doCreateBean(beanName, mbdToUse, args);
 			if (logger.isTraceEnabled()) {
 				logger.trace("Finished creating instance of bean '" + beanName + "'");
@@ -573,7 +573,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 			}
 		}
 		/**
-		 * 当前的bean是单例的 && 允许bean之间的循环依赖 && bean正在创建中
+		 * 当前的bean是单例的 && 允许bean之间的**循环依赖**  && bean正在创建中
 		 */
 		boolean earlySingletonExposure = (mbd.isSingleton()
 				&& this.allowCircularReferences
@@ -599,7 +599,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 		Object exposedObject = bean;
 		try {
 			/**
-			 * 【依赖注入】
+			 * 【依赖注入】重要
 			 * 填充的属性包括：普通属性和使用@Autowired和@Resource注解标注的引用类型属性的赋值。使用了反射操作set方法完成赋值.
 			 *
 			 * eg: 重点操作举例：
@@ -1499,7 +1499,7 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 				// 如果是InstantiationAwareBeanPostProcessor的实例
 				if (bp instanceof InstantiationAwareBeanPostProcessor) {
 					InstantiationAwareBeanPostProcessor ibp = (InstantiationAwareBeanPostProcessor) bp;
-					// 则依次执行后置处理器的postProcessProperties，首先使用postProcessProperties，获取属性值
+					// 则依次执行后置处理器的postProcessProperties，首先使用postProcessProperties，获取属性值 重要
 					PropertyValues pvsToUse = ibp.postProcessProperties(pvs, bw.getWrappedInstance(), beanName);
 					if (pvsToUse == null) {
 						if (filteredPds == null) {

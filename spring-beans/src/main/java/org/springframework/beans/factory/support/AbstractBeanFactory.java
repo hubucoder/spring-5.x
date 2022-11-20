@@ -308,7 +308,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 					// 此处的lambda表达式为：ObjectFactory的getObject方法
 					sharedInstance = getSingleton(beanName, () -> {
 						try {
-							/**
+							/** 重要
 							 * 创建对象并初始化，Spring用来创建Bean实例的核心方法
 							 *  此处调用的子类AbstractAutowireCapableBeanFactory的createBean方法.
 							 */
