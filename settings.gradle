@@ -30,4 +30,6 @@ rootProject.children.each {project ->
 	project.buildFileName = "${project.name}.gradle"
 }
 include 'sq-study'
+include 'sq_mvc_study'
+include 'sq_mybatis_study'
 

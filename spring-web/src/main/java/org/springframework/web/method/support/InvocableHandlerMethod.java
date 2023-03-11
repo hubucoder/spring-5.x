@@ -191,7 +191,7 @@ public class InvocableHandlerMethod extends HandlerMethod {
 		// 通过反射设置方法的访问权限为true
 		ReflectionUtils.makeAccessible(getBridgedMethod());
 		try {
-			// 反射调用方法.
+			// 反射调用方法. getBean() 得到的是 Controller
 			return getBridgedMethod().invoke(getBean(), args);
 		}
 		catch (IllegalArgumentException ex) {

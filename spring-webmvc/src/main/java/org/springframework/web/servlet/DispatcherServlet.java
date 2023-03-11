@@ -514,7 +514,7 @@ public class DispatcherServlet extends FrameworkServlet {
 	}
 
 	/**
-	 * Initialize the strategy objects that this servlet uses.
+	 * Initialize the strategy objects that this servlet uses.  九大初始化
 	 * <p>May be overridden in subclasses in order to initialize further strategy objects.
 	 */
 	protected void initStrategies(ApplicationContext context) {
@@ -528,7 +528,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		initThemeResolver(context);
 
 
-		// ****** 初始化请求处理HandlerMapping器组件 ******
+		// ****** 初始化请求处理HandlerMapping器组件 ****** 在 spring 初始化容器的十二步的最后一步调用此方法
 		initHandlerMappings(context);
 
 		// ****** 初始化请求处理器适配器组件 ******
@@ -645,7 +645,7 @@ public class DispatcherServlet extends FrameworkServlet {
 			}
 		}
 		else {
-			try {
+			try {// HandleMapping 类型就代表 controller
 				HandlerMapping hm = context.getBean(HANDLER_MAPPING_BEAN_NAME, HandlerMapping.class);
 				this.handlerMappings = Collections.singletonList(hm);
 			}
@@ -981,14 +981,14 @@ public class DispatcherServlet extends FrameworkServlet {
 				}
 			}
 		}
-
+		// 默认配置文件是 DispatcherServlet.properties
 		// Make framework objects available to handlers and view objects.
 		request.setAttribute(WEB_APPLICATION_CONTEXT_ATTRIBUTE, getWebApplicationContext());
 		request.setAttribute(LOCALE_RESOLVER_ATTRIBUTE, this.localeResolver);
 		request.setAttribute(THEME_RESOLVER_ATTRIBUTE, this.themeResolver);
 		request.setAttribute(THEME_SOURCE_ATTRIBUTE, getThemeSource());
 
-		if (this.flashMapManager != null) {
+		if (this.flashMapManager != null) {// 从session 中取出重定向参数，而且在取出后会将改参数从 session中移除
 			FlashMap inputFlashMap = this.flashMapManager.retrieveAndUpdate(request, response);
 			if (inputFlashMap != null) {
 				request.setAttribute(INPUT_FLASH_MAP_ATTRIBUTE, Collections.unmodifiableMap(inputFlashMap));
@@ -998,7 +998,7 @@ public class DispatcherServlet extends FrameworkServlet {
 		}
 
 		try {
-			// 调用doDispatch方法来处理请求，SpringMVC用来处理请求的核心方法.
+			// 调用doDispatch方法来处理请求，SpringMVC用来处理请求的核心方法. 重点
 			doDispatch(request, response);
 		}
 		finally {
@@ -1074,7 +1074,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				multipartRequestParsed = (processedRequest != request);
 
 
-				// 根据请求查找请求处理器
+				// 根据请求查找请求处理器, 确定当前请求的 HandlerExecutionChan 执行链(即 controller 的执行方法)
 				// 声明一个controller通常有三种方法：
 				// 	(1) @Controller (2)实现HttpRequestHandler接口，并覆写handleRequest方法，将controller类通过@Component标注为Bean (3)通过xml配置.
 				mappedHandler = getHandler(processedRequest);
@@ -1084,7 +1084,7 @@ public class DispatcherServlet extends FrameworkServlet {
 					return;
 				}
 
-				// 查找当前请求处理器对应的适配器
+				// 查找当前请求处理器对应的适配器 重点 得到的是 RequestMappingHandlerAdapter
 				HandlerAdapter ha = getHandlerAdapter(mappedHandler.getHandler());
 
 				// Process last-modified header, if supported by the handler.
@@ -1103,7 +1103,7 @@ public class DispatcherServlet extends FrameworkServlet {
 					return;
 				}
 
-				// Actually invoke the handler.
+				// Actually invoke the handler. 重点
 				// 执行SpringMVC中真实对应的业务方法
 				//   HandlerAdapter的实现子类有： AbstractHandlerMethodAdapter、HttpRequestHandlerAdapter
 				mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
@@ -1127,7 +1127,7 @@ public class DispatcherServlet extends FrameworkServlet {
 				dispatchException = new NestedServletException("Handler dispatch failed", err);
 			}
 
-			// 将处理完成之后的结果进行页面视图渲染。比如：跳转到Jsp页面.
+			// 将处理完成之后的结果进行页面视图渲染。比如：跳转到Jsp页面. 重点
 			processDispatchResult(processedRequest, response, mappedHandler, mv, dispatchException);
 		}
 		catch (Exception ex) {
@@ -1191,7 +1191,7 @@ public class DispatcherServlet extends FrameworkServlet {
 
 		// Did the handler return a view to render?
 		if (mv != null && !mv.wasCleared()) {
-			// 调用reder方法完成视图渲染
+			// 调用render方法完成视图渲染
 			render(mv, request, response);
 			if (errorView) {
 				WebUtils.clearErrorRequestAttributes(request);

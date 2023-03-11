@@ -52,7 +52,7 @@ public class SpringServletContainerInitializer implements ServletContainerInitia
 	@Override
 	public void onStartup(@Nullable Set<Class<?>> webAppInitializerClasses, ServletContext servletContext)
 			throws ServletException {
-
+		// 初始化 WebApplicationInitializer 集合
 		List<WebApplicationInitializer> initializers = new LinkedList<>();
 
 		// webAppInitializerClasses表示传入的WebApplicationInitializer的子类

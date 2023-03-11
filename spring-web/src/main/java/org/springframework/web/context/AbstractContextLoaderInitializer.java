@@ -68,7 +68,7 @@ public abstract class AbstractContextLoaderInitializer implements WebApplication
 
 		// 如果创建的根应用上下文不为null
 		if (rootAppContext != null) {
-			// 创建ContextLoaderListener，并且在ContextLoaderListener中注入AnnotationConfigWebApplicationContext
+			// 创建ContextLoaderListener，并且在ContextLoaderListener中注入AnnotationConfigWebApplicationContext（spring 父容器）
 			ContextLoaderListener listener = new ContextLoaderListener(rootAppContext);
 			listener.setContextInitializers(getRootApplicationContextInitializers());
 			servletContext.addListener(listener);

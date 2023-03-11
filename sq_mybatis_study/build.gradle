@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 1.8
+
+group 'org.springframework'
+version '5.1.11.BUILD-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compile(project(":spring-beans"))
+    compile(project(":spring-core"))
+    compile(project(":spring-context"))
+    compile(project(":spring-context-indexer"))
+    compile(project(":spring-context-support"))
+    compile(project(":spring-aop"))
+    compile(project(":spring-expression"))
+    compile(project(":spring-instrument"))
+    compile(project(":spring-jcl"))
+    compile(project(":spring-jdbc"))
+    compile(project(":spring-jms"))
+    compile(project(":spring-messaging"))
+    compile(project(":spring-orm"))
+    compile(project(":spring-oxm"))
+    compile(project(":spring-test"))
+    compile(project(":spring-tx"))
+//    compile(project(":spring-webflux"))
+    compile(project(":spring-websocket"))
+    compile(project(":spring-web"))
+    compile(project(":spring-webmvc"))
+    compile(project(":spring-test"))
+//    coompile(project("spring-aspects"))
+
+//    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.4'
+
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.5.2'
+    compile group: 'org.mybatis', name: 'mybatis-spring', version: '2.0.2'
+
+    //数据库连接池、mysql的jdbc驱动
+    compile group: 'com.alibaba', name: 'druid', version: '1.1.19'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+
+
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+}
+
+test {
+    useJUnitPlatform()
+}

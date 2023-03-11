@@ -298,7 +298,7 @@ public class ContextLoader {
 						// 然后设置子容器和父容器的关系，子容器的parent设置为父容器的引用
 						cwac.setParent(parent);
 					}
-					// 调用IOC容器的刷新方法refresh()，初始化IOC容器
+					// 调用IOC容器的刷新方法refresh()，初始化IOC容器 重点
 					configureAndRefreshWebApplicationContext(cwac, servletContext);
 				}
 			}

@@ -171,7 +171,7 @@ public class InternalResourceView extends AbstractUrlBasedView {
 				logger.debug("Forwarding to [" + getUrl() + "]");
 			}
 
-			// 执行请求的转发操作.
+			// 执行请求的转发操作. forward 跳转到 视图页面，纯 servlet：request.getRequestDispatcher(path).forward(request, response)
 			rd.forward(request, response);
 		}
 	}

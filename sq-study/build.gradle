@@ -29,12 +29,16 @@ dependencies {
     compile(project(":spring-oxm"))
     compile(project(":spring-test"))
     compile(project(":spring-tx"))
-    compile(project(":spring-webflux"))
+//    compile(project(":spring-webflux"))
     compile(project(":spring-websocket"))
     compile(project(":spring-web"))
     compile(project(":spring-webmvc"))
     compile(project(":spring-test"))
 //    coompile(project("spring-aspects"))
+
+    compile group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.4'
+
+
 
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'

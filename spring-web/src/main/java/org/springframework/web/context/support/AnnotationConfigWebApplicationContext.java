@@ -82,7 +82,7 @@ import org.springframework.web.context.ContextLoader;
  * @author Juergen Hoeller
  * @since 3.0
  * @see org.springframework.context.annotation.AnnotationConfigApplicationContext
- */
+ */// 点进去
 public class AnnotationConfigWebApplicationContext extends AbstractRefreshableWebApplicationContext
 		implements AnnotationConfigRegistry {
 

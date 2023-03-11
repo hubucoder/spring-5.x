@@ -56,7 +56,7 @@ public abstract class AbstractAnnotationConfigDispatcherServletInitializer
 		Class<?>[] configClasses = getRootConfigClasses();
 		// 如果获取到的IOC父容器的配置类不为空
 		if (!ObjectUtils.isEmpty(configClasses)) {
-			// 创建IOC根容器
+			// 创建IOC根容器 spring 父容器
 			AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
 			// 把配置类加入到SpringWeb的配置类集合中
 			context.register(configClasses);
